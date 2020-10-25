@@ -5,11 +5,12 @@ extern crate env_logger;
 extern crate log;
 
 use log::info;
+use env_logger::Env;
 
 use std::{thread, time};
 
 fn main() {
-    env_logger::init();
+    env_logger::init_from_env(Env::new().default_filter_or("info"));
     info!("Client started");
 
     let sleep_time = time::Duration::from_secs(1);

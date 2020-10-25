@@ -7,9 +7,10 @@ extern crate env_logger;
 extern crate log;
 
 use log::info;
+use env_logger::Env;
 
 fn main() {
-    env_logger::init();
+    env_logger::init_from_env(Env::new().default_filter_or("info"));
 
     info!("Binding tcp listener");
     let server = TcpListener::bind("0.0.0.0:9001").unwrap();
